@@ -25,6 +25,8 @@ var upperChar = ['ABCDEFGHIJKLMNOPQRSTUVWXYZ'];
 var lowerChar = ['abcdefghijklmnopqrstuvwxyz'];
 var numerals = ['1234567890'];
 var specChar = [" !\"#$%&'()*+,-./:;<=>?@[\\]^_`{|}~"];
+var generateButton = document.querySelector('#gen');
+var copyButton = document.querySelector('#copy')
 
 function generatePassword() {
 
@@ -59,6 +61,11 @@ function generatePassword() {
 
 
 }
+
+generateButton.addEventListener('click', function());
+
+
+copyButton.addEventListener('click', function());
 
 generatePassword()
 
