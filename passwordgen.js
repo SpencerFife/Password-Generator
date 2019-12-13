@@ -41,7 +41,7 @@ function generateOptions() {
         return;
     }
     if (length > 128) {
-        alert('Password length must be less than 129 characters');
+        alert('Password length must be less than 128 characters');
         return;
     }
 
@@ -70,12 +70,44 @@ function generateOptions() {
 function generatePassword() {
 
     var options = generateOptions();
+    var passwordArrayOptions = [];
+
+    console.log(passwordArrayOptions);
+    if(options.specialChar){
+        passwordArrayOptions = passwordArrayOptions.concat(newSpecChar)
+    }
+    console.log(passwordArrayOptions);
+
+    if(options.numChar){
+        passwordArrayOptions = passwordArrayOptions.concat(numerals)
+    }
+    console.log(passwordArrayOptions);
+
+    if(options.lowChar){
+        passwordArrayOptions = passwordArrayOptions.concat(lowerChar)
+    }
+    console.log(passwordArrayOptions);
+
+    if(options.upchar){
+        passwordArrayOptions = passwordArrayOptions.concat(upperChar)
+    }
+    console.log(passwordArrayOptions);
+
+    var randomIndex = Math.floor(Math.random() * passwordArrayOptions.length);
+
+    var randomChar = passwordArrayOptions[]
+
+
+    
+    //var finalPassword = []
+    
+
     console.log(options);
     
 }
 
-
-generateButton.addEventListener('click', generatePassword);
+generatePassword()
+//generateButton.addEventListener('click', generatePassword);
 
 
 // copyButton.addEventListener('click', function());
