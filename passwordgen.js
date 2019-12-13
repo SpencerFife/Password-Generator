@@ -1,9 +1,9 @@
 /*
 Pseudo code:
-    1. Prompt user to input length of password (8-129).
+    1. Prompt user to input length of password (8-128).
         - if user inputs less than 8, alert: "Password must be more than 8 characters"
-        - if user inputs more than 129, alert: "Password must be less than 129 characters"
-        - if user inputs between 8-129 move to next prompt
+        - if user inputs more than 128, alert: "Password must be less than 129 characters"
+        - if user inputs between 8-128 move to next prompt
     2. alert: Do you want to use special characters?
         - if user selects OK, includes special characters
         - if user selects Cancel, doesn't include special characters
@@ -21,53 +21,66 @@ Pseudo code:
     8. User clicks "Copy to Clipboard" button, alert: "'generated password' has been saved to your clipboard"
 */
 
-var upperChar = ['ABCDEFGHIJKLMNOPQRSTUVWXYZ'];
-var lowerChar = ['abcdefghijklmnopqrstuvwxyz'];
-var numerals = ['1234567890'];
-var specChar = [" !\"#$%&'()*+,-./:;<=>?@[\\]^_`{|}~"];
+var upperChar = ['A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z'];
+var lowerChar = ['a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z'];
+var numerals = ['1','2','3','4','5','6','7','8','9','0'];
+var specChar = " !'()*+,-./:;<=>?@[\]^_`{|}~";
+var newSpecChar = specChar.split('')
 var generateButton = document.querySelector('#gen');
 var copyButton = document.querySelector('#copy')
 
-function generatePassword() {
+function generateOptions() {
 
     //prompts the user to input length of password
 
-    var password = prompt('How many characters would you like your password to contain?');
+    var length = parseInt(prompt('How many characters would you like your password to contain?'));
 
 
-    if (password < 8) {
+    if (length < 8) {
         alert('Password length must be more than 8 characters');
+        return;
     }
-    if (password > 128) {
+    if (length > 128) {
         alert('Password length must be less than 129 characters');
+        return;
     }
+
     var wantsSpecChar = confirm("Click OK to include special characters");
-    if (specChar) {
-
-    }
     var wantsNumChar = confirm("Click OK to include numeric characters");
-    if (numerals) {
-
-    }
     var wantsLowerChar = confirm("Click OK to include lowercase characters");
-    if (lowerChar) {
-
-    }
     var wantsUpperChar = confirm("Click OK to include uppercase characters");
-    if (upperChar) {
 
+    if (!wantsSpecChar && !wantsNumChar && !wantsLowerChar && !wantsUpperChar) {
+        alert('You must choose one valid input');
+        return;
+    }       
+
+    var questionOptions = {
+        length:length,
+        specialChar:wantsSpecChar,
+        numChar:wantsNumChar,
+        lowChar:wantsLowerChar,
+        upChar:wantsUpperChar
     }
 
-
+    return questionOptions;
 
 }
 
-generateButton.addEventListener('click', function());
+function generatePassword() {
+
+    var options = generateOptions();
+    console.log(options);
+    
+}
 
 
-copyButton.addEventListener('click', function());
+generateButton.addEventListener('click', generatePassword);
 
-generatePassword()
+
+// copyButton.addEventListener('click', function());
+
+
 
 
 
