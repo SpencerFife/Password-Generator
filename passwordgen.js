@@ -95,8 +95,7 @@ function generatePassword() {
 
     var randomIndex = Math.floor(Math.random() * passwordArrayOptions.length);
 
-    var randomChar = passwordArrayOptions[]
-
+    var randomChar = passwordArrayOptions[];
 
     
     //var finalPassword = []
